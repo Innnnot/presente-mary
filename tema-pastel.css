@@ -1,0 +1,28 @@
+:root {
+    --cor-fundo: #f8e8e8;
+    --cor-texto-principal: #5a4444;
+    --cor-titulo: #d48a8a;
+    --cor-fundo-container: #fff5f5;
+    --cor-label: #8b6969;
+    --cor-input-fundo: #ffffff;
+    --cor-input-texto: #5a4444;
+    --cor-input-placeholder: #bcacac;
+    --cor-botao-principal: #d48a8a;
+    --cor-botao-principal-hover: #c27979;
+    --cor-card-galao-fundo: #fff5f5;
+    --cor-card-galao-texto: #8b6969;
+    --cor-card-galao-borda: #d48a8a;
+    --cor-card-galao-selecionado-fundo: #d48a8a;
+    --cor-card-galao-selecionado-texto: #ffffff;
+    --cor-resultado-item-fundo: #fff5f5;
+    --cor-resultado-label: #8b6969;
+    --cor-resultado-valor: #d48a8a;
+    --cor-historico-item-fundo: #fff5f5;
+    --cor-historico-item-texto: #5a4444;
+    --cor-modal-fundo-overlay: rgba(0,0,0,0.4);
+    --cor-modal-content-fundo: #fff5f5;
+    --cor-modal-content-texto: #5a4444;
+    --cor-modal-close-button: #8b6969;
+    --cor-modal-close-button-hover: #5a4444;
+    --cor-btn-menu: #d48a8a;
+}

@@ -1,0 +1,510 @@
+:root {
+    --cor-fundo: #1e1b2e;
+    --cor-texto-principal: #e1e1fa;
+    --cor-titulo: #da77f2;
+    --cor-fundo-container: #2c2545;
+    --cor-label: #b197fc;
+    --cor-input-fundo: #362b55;
+    --cor-input-texto: #ffffff;
+    --cor-input-placeholder: #8e83a3;
+    --cor-botao-principal: #da77f2;
+    --cor-botao-principal-hover: #c44dff;
+    --cor-card-galao-fundo: #2c2545;
+    --cor-card-galao-texto: #e1e1fa;
+    --cor-card-galao-borda: #da77f2;
+    --cor-card-galao-selecionado-fundo: #c44dff;
+    --cor-card-galao-selecionado-texto: #ffffff;
+    --cor-resultado-item-fundo: #362b55;
+    --cor-resultado-label: #b197fc;
+    --cor-resultado-valor: #da77f2;
+    --cor-historico-item-fundo: #2c2545;
+    --cor-historico-item-texto: #e1e1fa;
+    --cor-modal-fundo-overlay: rgba(0,0,0,0.7);
+    --cor-modal-content-fundo: #2c2545;
+    --cor-modal-content-texto: #e1e1fa;
+    --cor-modal-close-button: #da77f2;
+    --cor-modal-close-button-hover: #c44dff;
+    --cor-btn-menu: #da77f2;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo); /* Usando a variável CSS */
+    color: var(--cor-texto-principal); /* Usando a variável CSS */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para mudanças de tema */
+}
+
+h1, h2 {
+    color: var(--cor-titulo); /* Usando a variável CSS */
+    text-align: center;
+}
+
+.container {
+    margin-top: 100px; /* Ajustado para a navbar menor */
+    background: var(--cor-fundo-container);
+    padding: 15px;
+    width: calc(100% - 30px); /* Considera o padding */
+    max-width: none; /* Remove max-width em mobile */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--cor-label); /* Usando a variável CSS */
+    font-weight: bold;
+}
+
+input[type="number"], select {
+    width: calc(100% - 12px);
+    padding: 12px; /* Maior área de toque */
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: var(--cor-input-fundo); /* Usando a variável CSS */
+    color: var(--cor-input-texto); /* Usando a variável CSS */
+    box-sizing: border-box;
+    font-size: 16px; /* Evita zoom automático em iOS */
+}
+
+input::placeholder {
+    color: var(--cor-input-placeholder); /* Usando a variável CSS */
+}
+
+button, .btn-menu {
+    background-color: var(--cor-botao-principal);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-menu {
+    position: fixed;
+    right: 20px;
+    top: 5px; /* Ajustado para ficar mais baixo */
+    width: 35px; /* Reduzido um pouco o tamanho */
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--cor-botao-principal);
+    border: none;
+    color: white;
+    font-size: 1.3em; /* Reduzido um pouco o tamanho do ícone */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+}
+
+.btn-menu:hover {
+    background-color: var(--cor-botao-principal-hover);
+}
+
+/* Estado expandido do botão */
+.btn-menu.aberto {
+    width: 250px;
+    height: auto;
+    min-height: 300px;
+    border-radius: 10px;
+    cursor: default;
+    align-items: flex-start;
+    padding: 20px;
+    display: block; /* Muda para block para permitir o conteúdo fluir normalmente */
+}
+
+/* Ícone do menu */
+.btn-menu > span {
+    transition: all 0.3s ease;
+}
+
+.btn-menu.aberto > span {
+    display: none;
+}
+
+/* Conteúdo do menu */
+.menu-content {
+    display: none; /* Esconde completamente quando fechado */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-menu.aberto .menu-content {
+    display: block; /* Mostra quando aberto */
+}
+
+.menu-content h3 {
+    color: white;
+    margin: 0 0 15px 0;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.menu-content ul li {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.menu-content ul li button {
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+}
+
+.menu-content ul li button:hover {
+    background-color: var(--cor-botao-principal-hover);
+}
+
+button {
+    min-height: 44px; /* Área de toque mínima recomendada */
+    padding: 12px 20px;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+button:hover {
+    background-color: var(--cor-botao-principal-hover); /* Usando a variável CSS */
+}
+
+.card-group {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.card-group input[type="radio"] {
+    display: none;
+}
+
+.card-group label.card {
+    background-color: var(--cor-card-galao-fundo); /* Usando a variável CSS */
+    color: var(--cor-card-galao-texto); /* Usando a variável CSS */
+    border: 2px solid var(--cor-card-galao-borda); /* Usando a variável CSS */
+    border-radius: 8px;
+    padding: 12px 20px; /* Maior área de toque */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-size: 1.1em;
+}
+
+.card-group input[type="radio"]:checked + label.card {
+    background-color: var(--cor-card-galao-selecionado-fundo); /* Usando a variável CSS */
+    color: var(--cor-card-galao-selecionado-texto); /* Usando a variável CSS */
+    border-color: var(--cor-card-galao-selecionado-fundo); /* Opcional: manter a cor da borda */
+}
+
+.resultado {
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.resultado-item {
+    background-color: var(--cor-resultado-item-fundo); /* Usando a variável CSS */
+    color: var(--cor-texto-principal); /* Usando uma variável geral para o texto */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resultado .label {
+    font-weight: bold;
+    color: var(--cor-resultado-label); /* Usando a variável CSS */
+}
+
+.resultado .valor {
+    color: var(--cor-resultado-valor); /* Usando a variável CSS */
+}
+
+.historico {
+    margin-top: 30px;
+    text-align: left;
+    width: 100%;
+}
+
+.historico h2 {
+    color: var(--cor-titulo); /* Usando a variável CSS */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#historicoLista {
+    list-style: none;
+    padding: 0;
+}
+
+#historicoLista li {
+    background-color: var(--cor-historico-item-fundo); /* Usando a variável CSS */
+    color: var(--cor-historico-item-texto); /* Usando a variável CSS */
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--cor-modal-fundo-overlay); /* Usando a variável CSS */
+}
+
+.modal-content {
+    background-color: var(--cor-modal-content-fundo); /* Usando a variável CSS */
+    margin: 30% auto; /* Mais próximo do topo em mobile */
+    padding: 15px;
+    border: 1px solid #888;
+    width: 90%;
+    border-radius: 10px;
+    position: relative;
+    color: var(--cor-modal-content-texto); /* Usando a variável CSS */
+}
+
+.close-button {
+    color: var(--cor-modal-close-button); /* Usando a variável CSS */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--cor-modal-close-button-hover); /* Usando a variável CSS */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para ícones (se estiver usando) */
+.fa-weight {
+    margin-right: 5px;
+}
+
+/* Adapte outras partes do seu CSS para usar as variáveis --cor-... */
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--cor-fundo-container);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* Nível superior da navbar */
+.nav-top {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 10px;
+}
+
+.nav-title {
+    color: var(--cor-titulo);
+    font-size: 1.4em;
+    margin: 0;
+    text-align: center;
+}
+
+/* Nível inferior da navbar (tabs) */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-fundo-container);
+    padding: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-tab {
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    padding: 12px 15px;
+    position: relative;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-tab:hover {
+    color: var(--cor-titulo);
+}
+
+.nav-tab.active {
+    color: var(--cor-titulo);
+}
+
+.nav-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--cor-titulo);
+}
+
+/* Media queries para diferentes tamanhos de tela */
+@media (max-width: 360px) {
+    .nav-title {
+        font-size: 1.2em;
+    }
+
+    .nav-tab {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+}
+
+/* Desativa hover em dispositivos touch */
+@media (hover: none) {
+    .nav-tab:hover,
+    button:hover,
+    .game-button:hover {
+        transform: none;
+    }
+}
+
+/* Adicione uma mensagem de ajuda abaixo do input */
+.input-help {
+    font-size: 0.8em;
+    color: var(--cor-label);
+    margin-top: -10px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Remover todas as classes relacionadas ao menu */
+.menu-container,
+.btn-menu,
+.menu-content,
+.menu-lateral,
+.menu-overlay {
+    display: none;
+}
+
+/* Botão de Tema e Dropdown */
+.tema-dropdown {
+    position: fixed;
+    top: 8px;
+    right: 15px;
+    z-index: 1001;
+}
+
+.btn-tema {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--cor-botao-principal);
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-tema:hover {
+    background-color: var(--cor-botao-principal-hover);
+    transform: scale(1.05);
+}
+
+.tema-menu {
+    display: none;
+    position: fixed;
+    right: 10px;
+    top: 55px;
+    background-color: var(--cor-fundo-container);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 1000;
+}
+
+.tema-menu.aberto {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tema-menu button {
+    width: 100%;
+    padding: 12px 15px;
+    text-align: left;
+    background: transparent;
+    color: var(--cor-texto-principal);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 2px 0;
+    font-size: 1em;
+}
+
+.tema-menu button:hover {
+    background-color: var(--cor-botao-principal);
+    color: white;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+    .tema-menu {
+        position: fixed;
+        top: 55px;
+        right: 10px;
+        width: calc(100% - 20px);
+        max-width: 300px;
+    }
+
+    .tema-menu button {
+        padding: 15px;
+        font-size: 1.1em;
+    }
+}

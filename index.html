@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1e1b2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Calculadora de Essência</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tema-escuro.css" id="tema-escuro" disabled>
+    <link rel="stylesheet" href="tema-pastel.css" id="tema-pastel" disabled>
+    <link rel="stylesheet" href="tema-por-do-sol.css" id="tema-por-do-sol" disabled>
+    <link rel="stylesheet" href="tema-onda-suave.css" id="tema-onda-suave" disabled>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-top">
+            <h1 class="nav-title">Presente do Môzi</h1>
+            <div class="tema-dropdown">
+                <button id="btnTema" class="btn-tema">
+                    <i class="fas fa-palette"></i>
+                </button>
+                <div class="tema-menu">
+                    <button onclick="mudarTema('original')">Original</button>
+                    <button onclick="mudarTema('escuro')">Escuro</button>
+                    <button onclick="mudarTema('pastel')">Pastel Delicado</button>
+                    <button onclick="mudarTema('por-do-sol')">Pôr do Sol Tropical</button>
+                    <button onclick="mudarTema('onda-suave')">Onda Suave</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav-tabs">
+            <a href="#" class="nav-tab active">Calculadora</a>
+            <a href="gatinho.html" class="nav-tab">Gatinho ou gatinha?</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Calculadora de Essência</h2>
+        
+        <label>Tipo de Galão:</label>
+        <div class="card-group">
+            <input type="radio" name="galao" id="galao1" value="1" checked>
+            <label for="galao1" class="card">1 litro</label>
+
+            <input type="radio" name="galao" id="galao3" value="3">
+            <label for="galao3" class="card">3 litros</label>
+
+            <input type="radio" name="galao" id="galao5" value="5">
+            <label for="galao5" class="card">5 litros</label>
+        </div>
+
+        <div class="input-container">
+            <label for="pesoAtual"><i class="fas fa-weight"></i> Peso Atual (em gramas):</label>
+            <input type="number" id="pesoAtual" placeholder="Ex: 1350" onchange="atualizarAjuda()" />
+            <div id="pesoAjuda" class="input-help"></div>
+        </div>
+
+        <button onclick="calcular()">Calcular</button>
+
+        <div class="resultado" id="resultado"></div>
+
+        <div class="historico">
+            <h2>Últimos Resultados</h2>
+            <ul id="historicoLista"></ul>
+            <button onclick="limparHistorico()">Limpar Histórico</button>
+        </div>
+    </div>
+
+    <div id="modalErro" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="mensagemErro">Erro!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

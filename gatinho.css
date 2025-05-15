@@ -1,0 +1,205 @@
+/* Estilos específicos do jogo Gatinho ou Gatinha */
+.game-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.image-container {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background-color: var(--cor-fundo-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#loading {
+    color: var(--cor-titulo);
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.score {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--cor-titulo);
+    margin: 10px 0;
+}
+
+.buttons {
+    display: none; /* Inicialmente oculto até a primeira imagem carregar */
+    width: 100%;
+    gap: 10px;
+}
+
+.game-button {
+    flex: 1;
+    min-height: 44px;
+    padding: 12px 15px;
+    font-size: 1.1em;
+    white-space: nowrap;
+    background-color: var(--cor-botao-principal);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.game-button:hover {
+    transform: scale(1.05);
+    background-color: var(--cor-botao-principal-hover);
+}
+
+.game-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Animações de feedback */
+.correct {
+    animation: flash-green 0.5s;
+}
+
+.wrong {
+    animation: flash-red 0.5s;
+}
+
+@keyframes flash-green {
+    0% { filter: brightness(100%); }
+    50% { filter: brightness(150%) sepia(100%) hue-rotate(50deg); }
+    100% { filter: brightness(100%); }
+}
+
+@keyframes flash-red {
+    0% { filter: brightness(100%); }
+    50% { filter: brightness(150%) sepia(100%) hue-rotate(-50deg); }
+    100% { filter: brightness(100%); }
+}
+
+/* Responsividade */
+@media (max-width: 320px) {
+    .game-button {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
+
+/* Estilos para o sistema de pontuação */
+.score-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.score, .high-score {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--cor-titulo);
+}
+
+.high-score {
+    color: var(--cor-botao-principal); /* Cor diferente para destacar o recorde */
+}
+
+/* Estilos para o modal de recorde */
+.recorde-modal .modal-content {
+    background-color: var(--cor-fundo-container);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    animation: slideDown 0.3s ease-out;
+}
+
+.recorde-mensagem {
+    color: var(--cor-titulo);
+    font-size: 1.5em;
+    margin: 0;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Adicione uma animação especial para quando bate recorde */
+#highScore.new-record {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Estilos para o modal de game over */
+.game-over-modal .modal-content {
+    background-color: var(--cor-fundo-container);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+    width: 90%;
+    margin: 30% auto;
+}
+
+.game-over-mensagem {
+    color: var(--cor-texto-principal);
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.restart-button {
+    background-color: var(--cor-botao-principal);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.restart-button:hover {
+    background-color: var(--cor-botao-principal-hover);
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
